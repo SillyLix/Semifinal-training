@@ -54,7 +54,6 @@ public class Score : MonoBehaviour
     {
         __score++;
         __scoreText.text = $"kills: {__score} Time {__time}";
-
     }
 
     IEnumerator TimeScore()

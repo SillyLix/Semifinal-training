@@ -95,7 +95,7 @@ public class PlayerMovement2D : MonoBehaviour
     void MovementWithPhysics()
     {
         // use physics for movement and cheack if we need to move horizontally or vertically
-        if (horizontalMovementNeeded)
+        if (horizontalMovementNeeded )
         {
             horizontalInput = Input.GetAxis("Horizontal");
             rb2d.linearVelocity = new Vector2(horizontalInput * playerSpeed, rb2d.linearVelocity.y);

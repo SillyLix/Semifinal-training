@@ -7,6 +7,7 @@ public class SpawnManager : MonoBehaviour
 {
     public float spawnRange, spawnY, difficultyMultiplier = 1, maxSpawnSpeed = 5, minSpawnSpeed = 2, difficultyIncreaseTime = 15, enemySpawnAmount = 1, enemyTwoPropability = 0.1f;
     [SerializeField] private GameObject[] enemies;
+
     float currentTime;
 
     void Start()

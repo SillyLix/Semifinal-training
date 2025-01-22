@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Drawing;
 using UnityEngine;
 
 public class WallScript : MonoBehaviour
@@ -12,6 +13,7 @@ public class WallScript : MonoBehaviour
 
     [Header("Other")]
 
+    private float size = 16f;
     public GameObject rightWall;
     public GameObject leftWall;
 
