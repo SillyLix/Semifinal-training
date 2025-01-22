@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class DealDamge : MonoBehaviour
 {
-    [SerializeField] private float damgeAMT = -50;
+    [SerializeField] private float damgeAMT = -100;
     [SerializeField] private AudioClip ememyDmgAudio;
     
     private void OnTriggerEnter2D(Collider2D collision)
@@ -12,7 +12,6 @@ public class DealDamge : MonoBehaviour
         {
             collision.gameObject.GetComponent<AudioSource>().PlayOneShot(ememyDmgAudio);
             collision.gameObject.GetComponent<HealthManagement>().HealthChange(damgeAMT);
-            Destroy(gameObject);
         }
     }
 }

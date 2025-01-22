@@ -2,32 +2,45 @@ using UnityEngine;
 
 public class CrushCheck : MonoBehaviour
 {
-    public int wallsTouched = 0;
+    public bool leftWallTouched;
+    public bool rightWallTouched;
+
+    private GameObject rightWall;
+    private GameObject leftWall;
     void Start()
     {
-        
-    }
-
-    void Update()
-    {
-        
+        rightWall = GameObject.Find("Right Wall");
+        leftWall = GameObject.Find("Left Wall");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "Wall")
+        if (collision.gameObject == rightWall)
         {
-            wallsTouched++;
+            rightWallTouched = true;
+        }
+        if (collision.gameObject == leftWall)
+        {
+            leftWallTouched = true;
         }
 
-        Debug.Log("Crushed");
+        if (rightWallTouched && leftWallTouched)
+        {
+            Debug.Log("Crushed");
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.transform.tag == "Wall")
+        if (collision.gameObject == rightWall)
         {
-            wallsTouched--;
+            rightWallTouched = false;
         }
+        if (collision.gameObject == leftWall)
+        {
+            leftWallTouched = false;
+        }
+
+        Debug.Log("Crushed");
     }
 }

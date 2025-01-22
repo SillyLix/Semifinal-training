@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Drawing;
 using UnityEngine;
 
 public class WallScript : MonoBehaviour
@@ -13,7 +12,6 @@ public class WallScript : MonoBehaviour
 
     [Header("Other")]
 
-    private float size = 16f;
     public GameObject rightWall;
     public GameObject leftWall;
 
@@ -34,7 +32,7 @@ public class WallScript : MonoBehaviour
     public IEnumerator Wait()
     {
         wallsMoving = false;
-        while  (true)
+        while (true)
         {
             yield return new WaitForSeconds(closingWaitTime);
             wallsMoving = true;
@@ -56,5 +54,13 @@ public class WallScript : MonoBehaviour
             rightWall.transform.position += new Vector3(moveAmount, 0, 0);
         }
 
+    }
+
+    public IEnumerator SlowWalls(float slowTime, float slowMultiplier)
+    {
+        float originalSpeed = closingSpeed;
+        closingSpeed *= slowMultiplier;
+        yield return new WaitForSeconds(slowTime);
+        closingSpeed = originalSpeed;
     }
 }
