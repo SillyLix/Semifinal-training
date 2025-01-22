@@ -9,6 +9,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject[] enemies;
     float currentTime;
 
+    public GameObject rightWall;
+
     void Start()
     {
         StartCoroutine(EnemySpawn());
@@ -33,7 +35,8 @@ public class SpawnManager : MonoBehaviour
                 difficultyMultiplier += 1;
                 maxSpawnAmount++;
             }
-
+            
+            
             float waitTime = UnityEngine.Random.Range(minSpawnSpeed / (0.5f + 0.5f * difficultyMultiplier), maxSpawnSpeed / (0.5f + 0.5f * difficultyMultiplier));
             yield return new WaitForSeconds(waitTime);
 
@@ -57,6 +60,7 @@ public class SpawnManager : MonoBehaviour
         {
             enemy = 1;
         }
+        spawnRange = rightWall.transform.position.x - 6f;
         Instantiate(enemies[enemy], new Vector2(UnityEngine.Random.Range(-spawnRange, spawnRange), spawnY), enemies[enemy].transform.rotation);
     }
 }
