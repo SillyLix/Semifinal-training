@@ -7,6 +7,8 @@ public class CrushCheck : MonoBehaviour
 
     private GameObject rightWall;
     private GameObject leftWall;
+
+    [SerializeField] GameObject pauseMenu;
     void Start()
     {
         rightWall = GameObject.Find("Right Wall");
@@ -26,7 +28,7 @@ public class CrushCheck : MonoBehaviour
 
         if (rightWallTouched && leftWallTouched)
         {
-            Debug.Log("Crushed");
+            pauseMenu.SetActive(true);
         }
     }
 
