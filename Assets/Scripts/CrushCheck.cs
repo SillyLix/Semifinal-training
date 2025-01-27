@@ -29,6 +29,7 @@ public class CrushCheck : MonoBehaviour
         if (rightWallTouched && leftWallTouched)
         {
             pauseMenu.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 
@@ -42,7 +43,5 @@ public class CrushCheck : MonoBehaviour
         {
             leftWallTouched = false;
         }
-
-        Debug.Log("Crushed");
     }
 }

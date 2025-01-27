@@ -45,7 +45,7 @@ public class WallScript : MonoBehaviour
     {
         if (rightWall.transform.position.x + moveAmount > maxWallDistance)
         {
-            leftWall.transform.position = new Vector3(-maxWallDistance, 0, 0);
+            leftWall.transform.position = new Vector3(-8, 0, 0);
             rightWall.transform.position = new Vector3(maxWallDistance, 0, 0);
         }
         else
@@ -58,9 +58,8 @@ public class WallScript : MonoBehaviour
 
     public IEnumerator SlowWalls(float slowTime, float slowMultiplier)
     {
-        float originalSpeed = closingSpeed;
-        closingSpeed *= slowMultiplier;
+        closingSpeed = -closingSpeed;
         yield return new WaitForSeconds(slowTime);
-        closingSpeed = originalSpeed;
+        closingSpeed = -closingSpeed;
     }
 }

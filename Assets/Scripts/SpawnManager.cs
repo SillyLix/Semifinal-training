@@ -1,11 +1,9 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public float spawnRange, spawnY, difficultyMultiplier = 1, maxSpawnSpeed = 5, minSpawnSpeed = 2, difficultyIncreaseTime = 15, enemySpawnAmount = 1, enemyTwoPropability = 0.1f;
+    public float spawnY, difficultyMultiplier = 1, maxSpawnSpeed = 5, minSpawnSpeed = 2, difficultyIncreaseTime = 15, enemySpawnAmount = 1, enemyTwoPropability = 0.1f;
     [SerializeField] private GameObject[] enemies;
     float currentTime;
 
@@ -51,16 +49,10 @@ public class SpawnManager : MonoBehaviour
 
     public void OneEnemySpawn()
     {
-        float currentProbability = enemyTwoPropability * Mathf.Pow(1.1f, difficultyMultiplier);
+        GameObject enemy = enemies[Random.Range(0, enemies.Length)];
+        
 
-        float randomValue = UnityEngine.Random.value;
-
-        int enemy = 0;
-        if (randomValue < currentProbability)
-        {
-            enemy = 1;
-        }
-        spawnRange = rightWall.transform.position.x - 6f;
-        Instantiate(enemies[enemy], new Vector2(UnityEngine.Random.Range(-spawnRange, spawnRange), spawnY), enemies[enemy].transform.rotation);
+        float spawnRange = rightWall.transform.position.x - 10f;
+        Instantiate(enemy, new Vector2(UnityEngine.Random.Range(-spawnRange, spawnRange), spawnY), enemy.transform.rotation);
     }
 }
